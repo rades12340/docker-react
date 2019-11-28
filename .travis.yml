@@ -1,10 +1,11 @@
-install: travis_wait mvn install
 sudo: required
 services:
   - docker
 
 before_install:
   - docker build -t radisav/docker-react -f Dockerfile.dev .
+
+install: travis_wait mvn install
 
 script:
   - docker run radisav/docker-react npm run test -- --coverage
