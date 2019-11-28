@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t radisav/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run radisav/docker-react npm run test -- --coverage
