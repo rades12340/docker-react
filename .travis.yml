@@ -7,3 +7,17 @@ before_install:
 
 script:
   - docker run radisav/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  name: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-496055662330"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+      DockerReact-env.bcbahxhtph.eu-central-1.elasticbeanstalk.com
